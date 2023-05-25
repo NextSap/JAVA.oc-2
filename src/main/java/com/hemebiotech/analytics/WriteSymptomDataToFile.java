@@ -18,9 +18,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
         try {
             FileWriter fileWriter = new FileWriter(this.filePath, false);
 
-            Map<String, Integer> sortedMap = sortAlphabetically(map);
-
-            sortedMap.forEach((symptom, amount) -> {
+            map.forEach((symptom, amount) -> {
                 try {
                     fileWriter.write(symptom+":"+amount.toString()+"\n");
                 } catch (IOException e) {
@@ -32,9 +30,5 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private Map<String, Integer> sortAlphabetically(Map<String, Integer> unsortedMap) {
-        return new TreeMap<>(unsortedMap);
     }
 }

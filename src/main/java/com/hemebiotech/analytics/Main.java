@@ -1,6 +1,5 @@
 package com.hemebiotech.analytics;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,18 +10,12 @@ public class Main {
         ReadSymptomDataFromFile read = new ReadSymptomDataFromFile("symptoms.txt");
         WriteSymptomDataToFile write = new WriteSymptomDataToFile("result.out");
 
-        List<String> symptoms = read.getSymptoms();
+        AnalyticsCounter analyticsCounter = new AnalyticsCounter(read, write);
 
-        Map<String, Integer> finalSymptoms = new HashMap<>();
+        List<String> symptoms = analyticsCounter.getSymptoms();
 
-        for(String symptom : symptoms) {
-            if(finalSymptoms.containsKey(symptom)) {
-                finalSymptoms.put(symptom, finalSymptoms.get(symptom) + 1);
-            } else {
-                finalSymptoms.put(symptom, 1);
-            }
-        }
+        Map<String, Integer> countSymptoms = analyticsCounter.countSymptoms(symptoms);
 
-        write.writeSymptoms(finalSymptoms);
+        analyticsCounter.writeSymptoms(analyticsCounter.sortSymptoms(countSymptoms));
     }
 }
