@@ -3,7 +3,6 @@ package com.hemebiotech.analytics;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class WriteSymptomDataToFile implements ISymptomWriter {
 
@@ -17,15 +16,10 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
     public void writeSymptoms(Map<String, Integer> map) {
         try {
             FileWriter fileWriter = new FileWriter(this.filePath, false);
+            StringBuilder builder = new StringBuilder();
 
-            map.forEach((symptom, amount) -> {
-                try {
-                    fileWriter.write(symptom+":"+amount.toString()+"\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
+            map.forEach((symptom, amount) -> builder.append(symptom).append(":").append(amount.toString()).append("\n"));
+            fileWriter.write(builder.toString());
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
