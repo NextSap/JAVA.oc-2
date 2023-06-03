@@ -1,6 +1,5 @@
 package com.hemebiotech.analytics;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +18,7 @@ public class AnalyticsCounter {
 
     /**
      * Get symptoms
+     *
      * @return List of symptoms
      */
     public List<String> getSymptoms() {
@@ -27,14 +27,15 @@ public class AnalyticsCounter {
 
     /**
      * Count each symptom
+     *
      * @param symptoms - List of symptoms
      * @return Map of symptoms with this syntax 'symptomName:amount'
      */
     public Map<String, Integer> countSymptoms(List<String> symptoms) {
         Map<String, Integer> finalSymptoms = new HashMap<>();
 
-        for(String symptom : symptoms) {
-            if(finalSymptoms.containsKey(symptom)) {
+        for (String symptom : symptoms) {
+            if (finalSymptoms.containsKey(symptom)) {
                 finalSymptoms.put(symptom, finalSymptoms.get(symptom) + 1);
             } else {
                 finalSymptoms.put(symptom, 1);
@@ -46,6 +47,7 @@ public class AnalyticsCounter {
 
     /**
      * Sort the symptoms map
+     *
      * @param symptoms - The unsorted symptoms map
      * @return The sorted symptoms map
      */
@@ -55,6 +57,7 @@ public class AnalyticsCounter {
 
     /**
      * Write symptoms in 'result.out' file
+     *
      * @param symptoms - Map of symptoms with this syntax 'symptomName:amount'
      */
     public void writeSymptoms(Map<String, Integer> symptoms) {
