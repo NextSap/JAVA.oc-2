@@ -1,7 +1,5 @@
 package com.hemebiotech.analytics;
 
-import com.hemebiotech.analytics.exception.WriteException;
-
 import java.io.FileWriter;
 import java.util.Map;
 
@@ -23,7 +21,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
             fileWriter.write(builder.toString());
 
         } catch (Exception e) {
-            throw new WriteException(e.getMessage(), e.getCause());
+            throw new RuntimeException(e.getMessage(), e.getCause());
         }
     }
 }

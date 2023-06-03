@@ -1,7 +1,5 @@
 package com.hemebiotech.analytics;
 
-import com.hemebiotech.analytics.exception.ReadException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
                     line = reader.readLine();
                 }
             } catch (Exception e) {
-                throw new ReadException(e.getMessage(), e.getCause());
+                throw new RuntimeException(e.getMessage(), e.getCause());
             }
         }
 

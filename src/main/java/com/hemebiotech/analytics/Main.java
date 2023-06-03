@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ReadSymptomDataFromFile read = new ReadSymptomDataFromFile("symptoms.txt");
+        ReadSymptomDataFromFile read = new ReadSymptomDataFromFile("src/main/resources/symptoms.txt");
         WriteSymptomDataToFile write = new WriteSymptomDataToFile("result.out");
 
         AnalyticsCounter analyticsCounter = new AnalyticsCounter(read, write);
